@@ -23,7 +23,7 @@ class CustomerLoginForm(AuthenticationForm):
         model = User
         fields =('username', 'password')
 
-class UpdateCustomerFomr:
+class UpdateCustomerForm:
     information = forms.CharField(widget= forms.Textarea)
 
     class Meta:
