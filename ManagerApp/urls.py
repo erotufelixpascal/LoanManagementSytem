@@ -1,7 +1,7 @@
 from django.urls import path
 from ManagerApp import views
 
-app_name = 'ManagerApp'
+app_name = 'manager_app'
 
 urlpatterns = [
     path('admin-login/', views.superuser_login_view, name='admin-login'),
