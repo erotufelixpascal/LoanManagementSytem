@@ -7,7 +7,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import user_passes_test
-from LoanApp.models import loanCategory, loanRequest, CustomerLoan, LoanTransaction
+from LoanApp.models import loanCategory, loanRequest, CustomerLoan, loanTransaction
 from .forms import LoanCategoryForm
 from LoginApp.models import CustomerSignUp
 from django.contrib.auth.models import User
@@ -51,7 +51,7 @@ def dashboard(request):
     rejected = loanRequest.ojects.all().filter(status='rejected').count(),
     totalLoan = CustomerLoan.objects.aggregate(Sum('totalLoan'))['total_loan__sum'],
     totalPayable = CustomerLoan.objects.aggregate(Sum('payable_loan'))['payable_loan__sum'],
-    totalPaid = LoanTransaction.objcts.aggregate(Sum('payment'))['payment__sum'],
+    totalPaid = loanTransaction.objcts.aggregate(Sum('payment'))['payment__sum'],
 
     dict ={
         'totalCustomer': totalCustomer[0],
@@ -158,6 +158,11 @@ def rejected_loan(request):
     rejectedLoan = loanRequest.objects.filter(status='rejected')
     return render(request, 'admin/rejected_loan.html', context={'rejectedLoan': rejectedLoan})
 
+
+@staff_member_required(login_url='/manager/admin-login')
+def transaction_loan(request):
+    transactions = loanTransaction.objects.all()
+    return render(request, 'admin/transaction.html', context={'transactions': transactions})
 
 
 
