@@ -146,6 +146,18 @@ def rejected_request(request, id):
     loanrequest = loanRequest.objects.filter(status='pending')
     return render(request, 'admin/request_user.html', context={'loanrequest': loanrequest})
 
+@staff_member_required(login_url='/manager/admin-login')
+def approved_loan(request):
+    # print(datetime.now())
+    approvedLoan = loanRequest.objects.filter(status='approved')
+    return render(request, 'admin/approved_loan.html', context={'approvedLoan': approvedLoan})
+
+
+@staff_member_required(login_url='/manager/admin-login')
+def rejected_loan(request):
+    rejectedLoan = loanRequest.objects.filter(status='rejected')
+    return render(request, 'admin/rejected_loan.html', context={'rejectedLoan': rejectedLoan})
+
 
 
 
