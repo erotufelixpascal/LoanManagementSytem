@@ -83,6 +83,39 @@ def total_users(request):
 
     return render(request, 'admin/customer.html', context={'user':users})
 
+@staff_member_required(login_url='/manager/admin-login')
+def user_remove(request,pk):
+    CustomerSignUp.objects.get(id=pk).delete()
+    user = User.objects.get(id=pk)
+    user.delete()
+    return HttpResponseRedirect('/manager/users')
+
+@staff_member_required(login_url='/manager/admin-login')
+def loan_request(request):
+    loanrequest = loanRequest.objects.filter(status='pending')
+    return render(request, 'admin/request_user.html', context={'loanrequest': loanrequest})
+
+@staff_member_required(login_url='/manager/admin-login')
+def approved_request(request,id):
+    today= date.today()
+    status_date = today.strftime("%B %d, %Y")
+    loan_obj = loanRequest.objects.get(id=id)
+    loan_obj.status_date = status_date
+    loan_obj.save()
+    year = loan_obj.year
+
+    approved_customer = loanRequest.objects.get(id=id).customer
+    if CustomerLoan.objects.filter(customer =approved_customer).exists():
+
+        #find prevoius amount of customer
+        PreviousAmount= CustomerLoan.onjects.get(customer= approved_customer).total_loan
+        PreviousPayable = CustomerLoan.objects.get(customer= approved_customer).payable_loan
+
+        #update balance
+        CustomerLoan.objects.filter(customer =approved_customer).update(total_loan = int(PreviousAmount)+ int(loan_obj.amount))
+        CustomerLoan.objects.filter(customer = approved_customer).update(payable_loan= int(PreviousPayable)+ int(loan_obj.amount)+ int(loan_obj.amount)*0.12 * int(year))
+        
+
 
 
 
