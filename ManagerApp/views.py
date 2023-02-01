@@ -5,7 +5,7 @@ from django.shortcuts import redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from django.contrib.admin.views.decorators import staff_member_reqiured
+from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import user_passes_test
 from LoanApp.models import loanCategory, loanRequest, CustomerLoan, LoanTransaction
 from .forms import LoanCategoryForm
@@ -41,7 +41,7 @@ def super_login_view(request):
     return render (request, 'admin/adminLogin.html', context={'form':form, 'user': "Admin Login"})
 
 # @user_passes_test(lambda u: u.is_superuser)
-@staff_member_reqiured(login_url='/manager/admin-login')
+@staff_member_required(login_url='/manager/admin-login')
 
 def dashboard(request):
 
@@ -58,8 +58,35 @@ def dashboard(request):
         'request' : requestloan[0],
         'approved' : approved[0],
         'rejected' : rejected[0],
-        
+        'totaLoan' : totalLoan[0],
+        'totalPayable' : totalPayable[0],
+        'totalPaid' : totalPaid[0],
     }
+
+    print(dict)
+
+    return render(request, 'admin/dashboard.html', context= dict)
+
+@staff_member_required(login_url='/manager/admin-login')
+def add_category(request):
+    form = LoanCategoryForm()
+    if request.method =='POST':
+        form = LoanCategoryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('ManagerApp:dashboard')
+    return render(request, 'admin/admin-add_category.html', {'form': form})
+
+@staff_member_required(login_url='/manager/admin-login')
+def total_users(request):
+    users = CustomerSignUp.objects.all()
+
+    return render(request, 'admin/customer.html', context={'user':users})
+
+
+
+
+
 
 
 
