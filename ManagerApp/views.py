@@ -30,5 +30,38 @@ def super_login_view(request):
 
                 user = authenticate(request, username= username, password =password)
 
+                if user is not None:
+                    login(request, user)
+                    return HttpResponseRedirect(reverse('ManagerApp:dashboard'))
+                else :
+                    return render(request, 'admin/adminLogin.html',context={'form' :form, 'error':"You are not Super user"})
+            
+            else:
+                return render(request, 'admin/adminLogin.html', context={'form':form,'error':"Invalid username or password"})
+    return render (request, 'admin/adminLogin.html', context={'form':form, 'user': "Admin Login"})
+
+# @user_passes_test(lambda u: u.is_superuser)
+@staff_member_reqiured(login_url='/manager/admin-login')
+
+def dashboard(request):
+
+    totalCustomer = CustomerSignUp.objects.all().count(),
+    requestloan  = loanRequest.objects.all().filter(status='pending').count(),
+    approved = loanRequest.objects.all().filter(status='approved').count(),
+    rejected = loanRequest.ojects.all().filter(status='rejected').count(),
+    totalLoan = CustomerLoan.objects.aggregate(Sum('totalLoan'))['total_loan__sum'],
+    totalPayable = CustomerLoan.objects.aggregate(Sum('payable_loan'))['payable_loan__sum'],
+    totalPaid = LoanTransaction.objcts.aggregate(Sum('payment'))['payment__sum'],
+
+    dict ={
+        'totalCustomer': totalCustomer[0],
+        'request' : requestloan[0],
+        'approved' : approved[0],
+        'rejected' : rejected[0],
+        
+    }
+
+
+
 
 
