@@ -114,7 +114,23 @@ def approved_request(request,id):
         #update balance
         CustomerLoan.objects.filter(customer =approved_customer).update(total_loan = int(PreviousAmount)+ int(loan_obj.amount))
         CustomerLoan.objects.filter(customer = approved_customer).update(payable_loan= int(PreviousPayable)+ int(loan_obj.amount)+ int(loan_obj.amount)*0.12 * int(year))
-        
+    
+    else:
+        #request customer
+
+        #customerloan object creation
+
+        save_loan = CustomerLoan()
+
+        save_loan.customer = approved_customer
+        save_loan.total_loan =int(loan_obj.amount)
+        save_loan.payable_loan = int(loan_obj.amount)+int(loan_obj.amount)*0.12* int(year)
+        save_loan.save()
+
+    loanRequest.objects.filter(id=id).update(status= 'approved')
+    loanrequest = loanRequest.objects.filter(status='pending')
+    return render(request, 'admin/request_user.html', context={'loanrequest':loanrequest})
+
 
 
 
