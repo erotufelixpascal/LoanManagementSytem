@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 from django import forms
-from LoanApp import loanCategory
+from LoanApp.models import loanCategory
 
 class LoanCategoryForm(forms.ModelForm):
     class Meta:
