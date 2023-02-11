@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import loanRequest, CustomerLoan, loanTransaction
+from .models import loanRequest, CustomerLoan, loanTransaction, loanCategory
 
 # Register your models here.
 admin.site.register(loanRequest)
