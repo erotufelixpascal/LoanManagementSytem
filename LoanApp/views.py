@@ -72,3 +72,24 @@ def UserDashboard(request):
     totalPaid = loanTransaction.objects.filter(customer=request.user.customer).aggregate(Sum('payment'))[
         'payment__sum'],
 
+    dict = {
+        'request': requestLoan[0],
+        'approved': approved[0],
+        'rejected': rejected[0],
+        'totalLoan': totalLoan[0],
+        'totalPayable': totalPayable[0],
+        'totalPaid': totalPaid[0],
+        
+
+    }
+
+    return render(request, 'loanApp/user_dashboard.html', context=dict)
+
+
+def error_404_view(request, exception):
+    print("not found")
+    return render(request, 'notFound.html')
+
+
+
+
