@@ -54,3 +54,21 @@ def UserLoanHistory(request):
     loans = loanRequest.objects.filter(
         customer=request.user.customer)
     return render(request, 'loanApp/user_loan_history.html', context={'loans': loans})
+
+
+@login_required(login_url='/account/login-customer')
+def UserDashboard(request):
+
+    requestLoan = loanRequest.objects.all().filter(
+        customer=request.user.customer).count(),
+    approved = loanRequest.objects.all().filter(
+        customer=request.user.customer).filter(status='approved').count(),
+    rejected = loanRequest.objects.all().filter(
+        customer=request.user.customer).filter(status='rejected').count(),
+    totalLoan = CustomerLoan.objects.filter(customer=request.user.customer).aggregate(Sum('total_loan'))[
+        'total_loan__sum'],
+    totalPayable = CustomerLoan.objects.filter(customer=request.user.customer).aggregate(
+        Sum('payable_loan'))['payable_loan__sum'],
+    totalPaid = loanTransaction.objects.filter(customer=request.user.customer).aggregate(Sum('payment'))[
+        'payment__sum'],
+
