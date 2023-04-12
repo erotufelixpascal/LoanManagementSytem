@@ -8,7 +8,7 @@ urlpatterns =[
     path('loan-repayment/', views.LoanPayment, name='loan_payment'),
     path('user-transaction/', views.UserTransaction, name= 'user_transaction'),
     path('user-loan-history/', views.UserLoanHistory, name='user_loan_history'),
-    path('user-dashboard/',views.UserDashBoard, name='user_dashboard'),
+    path('user-dashboard/',views.UserDashboard, name='user_dashboard'),
     
 
 ]
