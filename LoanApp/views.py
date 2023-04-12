@@ -4,7 +4,7 @@ from .forms import LoanRequestForm, LoanTransactionForm
 from .models import loanRequest, loanTransaction, CustomerLoan
 from django.shortcuts import redirect
 from django.http import HttpResponse, HttpResponseRedirect 
-from django.http import Sum
+from django.db.models import Sum
 
 
 # Create your views here.
