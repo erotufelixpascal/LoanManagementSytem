@@ -3,13 +3,15 @@ from django.contrib.auth.forms import AuthenticationForm
 from django import forms
 from LoanApp.models import loanCategory
 
+
 class LoanCategoryForm(forms.ModelForm):
     class Meta:
         model = loanCategory
-        fields = ('loan_name')
+        fields = ('loan_name',)
+
 
 class AdminLoginForm(AuthenticationForm):
     class Meta:
-        model= User
+        model = User
         fields = ('username', 'password')
         
