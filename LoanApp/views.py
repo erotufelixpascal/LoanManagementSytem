@@ -28,3 +28,17 @@ def LoanRequest(request):
             loan_obj.save()
             return redirect('/')
     return render(request, 'LoanApp/loanrequest.html', context={'form':form})
+
+@login_required(login_url='/account/login-customer')
+def LoanPayment(request):
+    form = LoanTransactionForm()
+    if request.method == 'POST':
+        form = LoanTransactionForm(request.POST)
+        if form.is_valid():
+            payment = form.save(commit=False)
+            payment.customer = request.user.customer
+            payment.save()
+            # pay_save = loanTransaction()
+            return redirect('/')
+
+    return render(request, 'loanApp/payment.html', context={'form': form})
