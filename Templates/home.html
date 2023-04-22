@@ -15,6 +15,29 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-6 m-auto">
+        <div class="col-md-6-auto">
+            <img src="{% static 'images/loan.jpg'%} class="img-fluid mx-auto alt="Bckground Image" srcset="">
+        </div>
+        <div class="col-md-6-auto">
+            <div class="d-flex justify-content align-items-center">
+                <a href="/loan/loan-request/">
+                    <button type="button" class="btn btn-info btn-rounded m-2">Apply for a Loan</button>
+                </a>
+
+                or
+
+                <a href="/account/signup-customer/">
+                    <button type="button" class ="btn btn-info btn-rounded m-2">Register</button>
+                </a>
+
+            </div>
+        </div>    
+    </div>
+
+<div/>
+
+{% inculde "footer.html" %}
+{% endblock%}
+
             
 
