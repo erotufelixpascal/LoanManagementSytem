@@ -62,6 +62,25 @@
                     {% endif %}
 
                 </ul>
+                <!-- Left links -->
+
+                <ul class="mb-2 navbar-nav ms-auto mb-lg-0">
+                    {% if user.is_authenticated %}
+
+                    <li>
+                        <a class="nav-link" href="{% url 'loanApp:loan_request'%}">Apply Loan</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="{% url 'login_App:edit-customer'%}">Edit Info</a>
+                    </li>
+
+                    <li>
+                        <a class="nav-link" href="/account/logout-customer">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item me-2">
+                        <b> <a class="nav-link" href="/account/login-customer">Login</a></b>
+
 
 
                 
