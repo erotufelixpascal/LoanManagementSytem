@@ -18,7 +18,6 @@ from django.urls import include, path
 from django.conf import settings
 from LoanApp import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.contrib.staticfiles.urls import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,6 +29,6 @@ urlpatterns = [
 ]
 
 urlpatterns += staticfiles_urlpatterns()
-urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+#urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 handler404 ='LoanApp.views.error_404_view'
 
