@@ -33,4 +33,77 @@ User Sign Up
 
                 {% csrf_token %}
 
-                
+                <div class="mb-4 form-outline">
+
+                    {% render_field form.username|attr:'required:true' class="form-control" %}
+                    <label class="form-label">Username</label>
+                </div>
+
+
+                <!-- Email address input -->
+
+                <div class="mb-4 form-outline">
+
+                    {% render_field form.email|attr:'required:true' class="form-control" %}
+                    <label class="form-label">Email address</label>
+                </div>
+
+                <!-- Password input -->
+                <div class="mb-4 form-outline">
+
+                    {% render_field form.password1|attr:'required:true' class="form-control" %}
+                    <label class="form-label">Password</label>
+                </div>
+                <!-- Repeat Password input -->
+                <div class="mb-4 form-outline">
+
+                    {% render_field form.password2|attr:'required:true' class="form-control" %}
+                    <label class="form-label">Repeat Password</label>
+                </div>
+
+
+                <!-- 2 column grid layout for inline styling -->
+                <div class="mb-4 row ">
+                    <div class="col">
+                        <!-- Checkbox -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" checked />
+                            <label class="form-check-label"> Remember me </label>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <!-- Simple link -->
+                        <a href="#!">Forgot password?</a>
+                    </div>
+                </div>
+
+                <!-- Submit button -->
+                <button type="submit" class="mb-4 btn btn-primary btn-block">Sign up</button>
+
+                <!-- Register buttons -->
+                <div class="text-center">
+                    <p>Are you already a member? <a href="/account/login-customer">Sign in</a></p>
+                    <p>or sign up with:</p>
+                    <button type="button" class="mx-1 btn btn-primary btn-floating">
+                        <i class="fab fa-facebook-f"></i>
+                    </button>
+
+                    <button type="button" class="mx-1 btn btn-primary btn-floating">
+                        <i class="fab fa-google"></i>
+                    </button>
+
+                    <button type="button" class="mx-1 btn btn-primary btn-floating">
+                        <i class="fab fa-twitter"></i>
+                    </button>
+
+                    <button type="button" class="mx-1 btn btn-primary btn-floating">
+                        <i class="fab fa-github"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
