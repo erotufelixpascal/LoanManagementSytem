@@ -17,9 +17,6 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-TEMPLATES_DIR =os.path.join(BASE_DIR, 'templates')
-STATIC_DIR =os.path.join(BASE_DIR, 'static')
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # Quick-start development settings - unsuitable for production
@@ -30,26 +27,30 @@ SECRET_KEY = 'yzs1q(k4a1@ih)uz8ddgjwt5+)xd!u3+j69p@xnvy(!g_e&^_l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-#DEBUG = False
 
-#this has to be set when DEBUG= False
-ALLOWED_HOSTS = []
-#ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+# Specify hosts to be allowed. 
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'LoginApp',
-    'LoanApp',
-    'ManagerApp',
+    # LOCAL APPLICATIONS
+    'LoginApp.apps.LoginappConfig',
+    'LoanApp.apps.LoanappConfig',
+    'ManagerApp.apps.ManagerappConfig',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-    #'bootstrap5',
+    'django.contrib.staticfiles', 
+
+    
+
+    # PLUGINS HERE
+    'bootstrap4'
 ]
 
 MIDDLEWARE = [
@@ -68,7 +69,7 @@ ROOT_URLCONF = 'LoanManagementSytem.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -128,10 +129,18 @@ USE_L10N = True
 USE_TZ = True
 
 
+
+
+# OUR MAIN CHANGES TO SETTING FILE HERE
+
+
+STATIC_DIR =os.path.join(BASE_DIR, 'static')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 
 #STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATICFILES_DIRS = [STATIC_DIR]

@@ -59,8 +59,8 @@ def UserLoanHistory(request):
 @login_required(login_url='/account/login-customer')
 def UserDashboard(request):
 
-    requestLoan = loanRequest.objects.all().filter(
-        customer=request.user.customer).count(),
+    requestLoan = loanRequest.objects.all().filter(customer=request.user.customer).count(),
+    
     approved = loanRequest.objects.all().filter(
         customer=request.user.customer).filter(status='approved').count(),
     rejected = loanRequest.objects.all().filter(
