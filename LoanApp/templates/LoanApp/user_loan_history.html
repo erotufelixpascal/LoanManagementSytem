@@ -1,24 +1,9 @@
 {% extends 'base.html' %}
 
-{% load static %}
+<!-- TODO: Display appropriate page title -->
 
 
-{% block block_js %}
-<script>
-
-</script>
-{% endblock %}
-
-
-{% block css_block %}
-<style>
-
-</style>
-
-{% endblock %}
-
-{% block body_block %}
-{% include 'navbar.html' %}
+{% block content %}
 <div class="container my-5">
     <h1 class="text-center text-primary">Loan Request History</h1>
     <div class="my-5 users">
@@ -67,7 +52,6 @@
     </div>
 </div>
 
-{% include 'footer.html'%}
-{% endblock %}
+{% endblock content %}
 
 

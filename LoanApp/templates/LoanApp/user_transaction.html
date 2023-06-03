@@ -1,64 +1,56 @@
 {% extends 'base.html' %}
 
-{% load static %}
-
-{% block css_block %}
-
 <style>
     .main-section {
         margin-bottom: 500px;
     }
 </style>
 
-{% endblock %}
+<!-- TODO: Display appropriate page title -->
 
-{% block body_block %}
+{% block content %}
+    <div class="container my-5 ">
+        <h1 class="text-center text-primary">My Payment Transaction</h1>
+        <div class="my-5 users main-section">
+            <table class="table text-center table-light table-hover table-bordered table-striped">
+                <thead class="bg-dark ">
+                    <tr class="text-dark ">
+                        <th scope="col">SL</th>
 
-{% include 'navbar.html' %}
-<div class="container my-5 ">
-    <h1 class="text-center text-primary">My Payment Transaction</h1>
-    <div class="my-5 users main-section">
-        <table class="table text-center table-light table-hover table-bordered table-striped">
-            <thead class="bg-dark ">
-                <tr class="text-dark ">
-                    <th scope="col">SL</th>
+                        <th scope="col">User ID</th>
+                        <th scope="col">Username</th>
 
-                    <th scope="col">User ID</th>
-                    <th scope="col">Username</th>
+                        <th scope="col">Payment Amount</th>
+                        <th scope="col">Transaction ID</th>
+                        <th scope="col">Date</th>
 
-                    <th scope="col">Payment Amount</th>
-                    <th scope="col">Transaction ID</th>
-                    <th scope="col">Date</th>
+                        <th scope="col">Customer Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for loan in transactions %}
 
-                    <th scope="col">Customer Email</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for loan in transactions %}
+                    <tr>
+                        <th scope="row">{{forloop.counter}}</th>
 
-                <tr>
-                    <th scope="row">{{forloop.counter}}</th>
-
-                    <td>{{loan.customer.id}}</td>
-                    <td>{{loan.customer}}</td>
+                        <td>{{loan.customer.id}}</td>
+                        <td>{{loan.customer}}</td>
 
 
-                    <td>{{loan.payment}} Tk</td>
-                    <td>{{loan.transaction}}</td>
-                    <td>{{loan.payment_date}}</td>
-                    <td>{{loan.customer.user.email}}</td>
+                        <td>{{loan.payment}} Tk</td>
+                        <td>{{loan.transaction}}</td>
+                        <td>{{loan.payment_date}}</td>
+                        <td>{{loan.customer.user.email}}</td>
 
 
-                </tr>
-                {% endfor %}
+                    </tr>
+                    {% endfor %}
 
-            </tbody>
-
-        </table>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
 
-{% include 'footer.html' %}
 
-{% endblock %}
+{% endblock content %}
 

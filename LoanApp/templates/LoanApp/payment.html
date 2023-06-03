@@ -1,13 +1,7 @@
 {% extends 'base.html' %}
 {% load widget_tweaks %}
-{% load static %}
 
-{% block title_block %}
-User Login
-{% endblock %}
-
-
-{% block body_block %}
+<!-- TODO: Display appropriate page title -->
 
 {% include 'navbar.html' %}
 <div class="container my-5">
@@ -27,18 +21,15 @@ User Login
 
                 <button type="submit" class="mb-4 btn btn-primary btn-block">Payment</button>
 
-        </div>
+                </div>
 
                 <!-- Submit button -->
 
                 <!-- Register buttons -->
 
-    </form>
+            </form>
+        </div>
+    </div>
 </div>
-</div>
-
-</div>
-
-{% include "footer.html" %}
 
 {% endblock %}
