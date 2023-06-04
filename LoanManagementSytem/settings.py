@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     
 
     # PLUGINS HERE
-    'bootstrap4'
+    'bootstrap4',
+    'widget_tweaks'
 ]
 
 MIDDLEWARE = [

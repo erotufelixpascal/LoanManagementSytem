@@ -34,11 +34,11 @@ def super_login_view(request):
                     login(request, user)
                     return HttpResponseRedirect(reverse('ManagerApp:dashboard'))
                 else :
-                    return render(request, 'admin/adminLogin.html',context={'form' :form, 'error':"You are not Super user"})
+                    return render(request, 'ManagerApp/adminLogin.html',context={'form' :form, 'error':"You are not Super user"})
             
             else:
-                return render(request, 'admin/adminLogin.html', context={'form':form,'error':"Invalid username or password"})
-    return render (request, 'admin/adminLogin.html', context={'form':form, 'user': "Admin Login"})
+                return render(request, 'ManagerApp/adminLogin.html', context={'form':form,'error':"Invalid username or password"})
+    return render (request, 'ManagerApp/adminLogin.html', context={'form':form, 'user': "Admin Login"})
 
 # @user_passes_test(lambda u: u.is_superuser)
 @staff_member_required(login_url='/manager/admin-login')
@@ -65,7 +65,7 @@ def dashboard(request):
 
     print(dict)
 
-    return render(request, 'admin/dashboard.html', context= dict)
+    return render(request, 'ManagerApp/dashboard.html', context= dict)
 
 @staff_member_required(login_url='/manager/admin-login')
 def add_category(request):
@@ -75,13 +75,13 @@ def add_category(request):
         if form.is_valid():
             form.save()
             return redirect('ManagerApp:dashboard')
-    return render(request, 'admin/admin-add_category.html', {'form': form})
+    return render(request, 'ManagerApp/admin-add_category.html', {'form': form})
 
 @staff_member_required(login_url='/manager/admin-login')
 def total_users(request):
     users = CustomerSignUp.objects.all()
 
-    return render(request, 'admin/customer.html', context={'user':users})
+    return render(request, 'ManagerApp/customer.html', context={'user':users})
 
 @staff_member_required(login_url='/manager/admin-login')
 def user_remove(request,pk):
@@ -93,7 +93,7 @@ def user_remove(request,pk):
 @staff_member_required(login_url='/manager/admin-login')
 def loan_request(request):
     loanrequest = loanRequest.objects.filter(status='pending')
-    return render(request, 'admin/request_user.html', context={'loanrequest': loanrequest})
+    return render(request, 'ManagerApp/request_user.html', context={'loanrequest': loanrequest})
 
 @staff_member_required(login_url='/manager/admin-login')
 def approved_request(request,id):
@@ -129,7 +129,7 @@ def approved_request(request,id):
 
     loanRequest.objects.filter(id=id).update(status= 'approved')
     loanrequest = loanRequest.objects.filter(status='pending')
-    return render(request, 'admin/request_user.html', context={'loanrequest':loanrequest})
+    return render(request, 'ManagerApp/request_user.html', context={'loanrequest':loanrequest})
 
 
 @staff_member_required(login_url='/manager/admin-login')
@@ -144,25 +144,25 @@ def rejected_request(request, id):
     # print(rejected_customer)
     loanRequest.objects.filter(id=id).update(status='rejected')
     loanrequest = loanRequest.objects.filter(status='pending')
-    return render(request, 'admin/request_user.html', context={'loanrequest': loanrequest})
+    return render(request, 'ManagerApp/request_user.html', context={'loanrequest': loanrequest})
 
 @staff_member_required(login_url='/manager/admin-login')
 def approved_loan(request):
     # print(datetime.now())
     approvedLoan = loanRequest.objects.filter(status='approved')
-    return render(request, 'admin/approved_loan.html', context={'approvedLoan': approvedLoan})
+    return render(request, 'ManagerApp/approved_loan.html', context={'approvedLoan': approvedLoan})
 
 
 @staff_member_required(login_url='/manager/admin-login')
 def rejected_loan(request):
     rejectedLoan = loanRequest.objects.filter(status='rejected')
-    return render(request, 'admin/rejected_loan.html', context={'rejectedLoan': rejectedLoan})
+    return render(request, 'ManagerApp/rejected_loan.html', context={'rejectedLoan': rejectedLoan})
 
 
 @staff_member_required(login_url='/manager/admin-login')
 def transaction_loan(request):
     transactions = loanTransaction.objects.all()
-    return render(request, 'admin/transaction.html', context={'transactions': transactions})
+    return render(request, 'ManagerApp/transaction.html', context={'transactions': transactions})
 
 
 
