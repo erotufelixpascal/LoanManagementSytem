@@ -43,7 +43,7 @@ def sign_up_view(request):
                 else:
                     error ='Your password is not strong enough'
     
-    return render(request, 'LoginApp/templates/LoginApp/signup.html', context={'form':form, 'user':"Customer Register", 'error': error})
+    return render(request, 'LoginApp/signup.html', context={'form':form, 'user':"Customer Register", 'error': error})
     #return render(request, 'LoginApp/signup.html', context={'form':form, 'user':"Customer Register", 'error': error})
 
 def login_view(request):
@@ -63,9 +63,9 @@ def login_view(request):
                 return HttpResponseRedirect(reverse('home'))
 
         else:
-            return render(request, 'LoginApp/templates/LoginApp/login.html', context={'form':form, 'user':"Customer Login", 'error':'Invalid Username or password'})
+            return render(request, 'LoginApp/login.html', context={'form':form, 'user':"Customer Login", 'error':'Invalid Username or password'})
     
-    return render(request, 'LoginApp/templates/LoginApp/login.html', context={'form':form, 'user':"Customer Login"})
+    return render(request, 'LoginApp/login.html', context={'form':form, 'user':"Customer Login"})
 
 @login_required
 def logout_view(request):
@@ -84,7 +84,7 @@ def edit_customer(request):
             customer.save()
             return HttpResponseRedirect(reverse('home'))
         
-    return render(request, 'LoginApp/templates/LoginApp/edit.html', context={'form':form})
+    return render(request, 'LoginApp/edit.html', context={'form':form})
 
 
 

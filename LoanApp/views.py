@@ -9,8 +9,6 @@ from django.db.models import Sum
 
 # Create your views here.
 
-#@login_required(login_url='/account/login_customer')
-
 def home(request):
     return render (request, 'home.html', context={})
 
@@ -27,7 +25,7 @@ def LoanRequest(request):
             loan_obj.customer = request.user.customer
             loan_obj.save()
             return redirect('/')
-    return render(request, 'LoanApp/templates/LoanApp/loanrequest.html', context={'form':form})
+    return render(request, 'LoanApp/loanrequest.html', context={'form':form})
 
 @login_required(login_url='/account/login-customer')
 def LoanPayment(request):
@@ -41,19 +39,19 @@ def LoanPayment(request):
             # pay_save = loanTransaction()
             return redirect('/')
 
-    return render(request, 'LoanApp/templates/LoanApp/payment.html', context={'form': form})
+    return render(request, 'LoanApp/payment.html', context={'form': form})
 
 @login_required(login_url='/account/login-customer')
 def UserTransaction(request):
     transactions = loanTransaction.objects.filter(
         customer=request.user.customer)
-    return render(request, 'LoanApp/templates/LoanApp/user_transaction.html', context={'transactions': transactions})
+    return render(request, 'LoanApp/user_transaction.html', context={'transactions': transactions})
 
 @login_required(login_url='/account/login-customer')
 def UserLoanHistory(request):
     loans = loanRequest.objects.filter(
         customer=request.user.customer)
-    return render(request, 'LoanApp/templates/LoanApp/user_loan_history.html', context={'loans': loans})
+    return render(request, 'LoanApp/user_loan_history.html', context={'loans': loans})
 
 
 @login_required(login_url='/account/login-customer')
@@ -83,7 +81,7 @@ def UserDashboard(request):
 
     }
 
-    return render(request, 'LoanApp/templates/LoanApp/user_dashboard.html', context=dict)
+    return render(request, 'LoanApp/user_dashboard.html', context=dict)
 
 
 def error_404_view(request, exception):
