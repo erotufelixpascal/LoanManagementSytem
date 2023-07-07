@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load mathfilters %} 
+{% load admin_list %} 
 
 <!-- TODO: Display appropriate page title -->
 
@@ -81,7 +81,7 @@
                         <h3>Payable Loan</h3>
 
                         {% if totalPayable %}
-                        <h1><span id="digit">৳{{ totalPayable|sub:0 }}</span></h1>
+                        <h1><span id="digit">৳{{ totalPayable|add:0 }}</span></h1>
                         {% else %}
                         <h1><span id="digit">৳0</span></h1>
                         {% endif %}
@@ -93,7 +93,7 @@
                         <h3>Approved Loan</h3>
 
                         {% if totalLoan %}
-                        <h1><span id="digit">৳{{totalLoan|sub:0}}</span></h1>
+                        <h1><span id="digit">৳{{totalLoan|add:0}}</span></h1>
                         {% else %}
                         <h1><span id="digit">৳0</span></h1>
                         {% endif %}
@@ -105,7 +105,7 @@
                         <h3>Total Paid Loan</h3>
 
                         {% if totalPaid %}
-                        <h1><span id="digit">৳{{totalPaid|sub:0}}</span></h1>
+                        <h1><span id="digit">৳{{totalPaid|add:0}}</span></h1>
                         {% else %}
                         <h1><span id="digit">৳0</span></h1>
                         {% endif %}
@@ -117,7 +117,7 @@
                         <h3>Total Due Loan</h3>
 
                         {% if totalPayable or totalPaid %}
-                        <h1><span id="digit">৳{{ totalPayable|sub:totalPaid }}</span></h1>
+                        <h1><span id="digit">৳{{ totalPayable|add:totalPaid }}</span></h1>
                         {% else %}
                         <h1><span id="digit">৳0</span></h1>
                         {% endif %}
