@@ -8,35 +8,25 @@
 
         <div class="row mb-5">
             <div class="p-5 m-auto rounded shadow-lg col-md-6 bg-body">
-                <h3 class="text-center text-success"> Request For Loan</h3>
-                </h3>
+                <h3 class="text-center text-success"> Request Form For A Loan</h3>
+                
                 <form method="POST" class="my-5">
 
                     {% csrf_token %}
 
-
                     <div class="mb-4 input-group">
-                        <div class="input-group-text">Loan Category</div>
-                        
+                        <div class="input-group-text">Loan Category</div>    
                     </div>
-                    <div class="mb-4 form-outline">
-
-                        
+                    <div class="mb-4 form-outline"> 
                         <label class="form-label">Reason For Loan</label>
                     </div>
 
-                    <div class="mb-4 form-outline">
-
-                        
+                    <div class="mb-4 form-outline">                      
                         <label class="form-label">Request Amount</label>
                     </div>
 
-
-
-                    <div class="mb-4 form-outline">
-
-                        
-                        <label class="form-label">How many year for loan?</label>
+                    <div class="mb-4 form-outline">                        
+                        <label class="form-label">Loan Period</label>
                     </div>
 
                     <!-- 2 column grid layout for inline styling -->
@@ -48,12 +38,12 @@
                                 <label class="form-check-label"> Remember me </label>
                             </div>
                         </div>
-
-
+                        <div class="col">
+                                <button type="submit" class="mb-4 btn btn-primary btn-block">Send Request</button>
+                        </div>        
                     </div>
 
-                    <button type="submit" class="mb-4 btn btn-primary btn-block">Send Request</button>
-
+                    
                 </form>
             </div>
         </div>
