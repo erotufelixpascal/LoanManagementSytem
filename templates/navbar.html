@@ -42,7 +42,7 @@
                 <!-- Left links -->
                 <ul class="mb-2 navbar-nav me-auto mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="/">HOME</a>
+                        <a class="nav-link" href="/">Home</a>
                     </li>
 
                     {% if user.is_authenticated %}
@@ -78,6 +78,9 @@
                     <li>
                         <a class="nav-link" href="{% url 'login_app:logout' %}">Logout</a>
                     </li>
+                    <li>
+                        <i class='fas'>&#xf2bd;{{user}}/Role</i>
+                    </li>
                     {% else %}
                     <li class="nav-item me-2">
                         <b> <a class="nav-link" href="{% url 'login_app:login_customer' %}">Login</a></b>
@@ -88,6 +91,7 @@
                     <li class="nav-item">
                         <b> <a class="nav-link" href="{% url 'ManagerApp:admin_login' %}">Admin Login</a></b>
                     </li>
+                    
 
                     {% endif %}
 
