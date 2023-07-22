@@ -42,21 +42,22 @@
                 <!-- Left links -->
                 <ul class="mb-2 navbar-nav me-auto mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="/">HOME</a>
+                        <a class="nav-link" href="/">Home</a>
                     </li>
 
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="/loan/user-dashboard">Dashboard</a>
+                        <a class="nav-link" href=" {% url 'LoanApp:user_dashboard' %}">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/loan/user-loan-history">Loan History</a>
+                        <a class="nav-link" href=" {% url 'LoanApp:user_loan_history' %}">Loan History</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'loanApp:loan_payment' %}">Pay Loan</a>
+                        
+                        <a class="nav-link" href=" {% url 'LoanApp:loan_payment' %}">Pay Loan</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/loan/user-transaction">Transactions</a>
+                        <a class="nav-link" href=" {% url 'LoanApp:user_transaction' %}">Transactions</a>
                     </li>
                     {% endif %}
 
@@ -67,25 +68,30 @@
                     {% if user.is_authenticated %}
 
                     <li>
-                        <a class="nav-link" href="{% url 'loanApp:loan_request'%}">Apply Loan</a>
+                       
+                        <a class="nav-link" href="{% url 'LoanApp:loan_request' %}">Apply Loan</a>
                     </li>
                     <li>
-                        <a class="nav-link" href="{% url 'login_App:edit-customer'%}">Edit Info</a>
+                        <a class="nav-link" href="{% url 'login_app:edit_customer' %}">Edit Info</a>
                     </li>
 
                     <li>
-                        <a class="nav-link" href="/account/logout-customer">Logout</a>
+                        <a class="nav-link" href="{% url 'login_app:logout' %}">Logout</a>
+                    </li>
+                    <li>
+                        <i class='fas'>&#xf2bd;{{user}}/Role</i>
                     </li>
                     {% else %}
                     <li class="nav-item me-2">
-                        <b> <a class="nav-link" href="/account/login-customer">Login</a></b>
+                        <b> <a class="nav-link" href="{% url 'login_app:login_customer' %}">Login</a></b>
                     </li>
                     <li class="nav-item">
-                        <b> <a class="nav-link" href="/account/signup-customer">Signup</a></b>
+                        <b> <a class="nav-link" href="{% url 'login_app:signup_customer' %}">Signup</a></b>
                     </li>
                     <li class="nav-item">
-                        <b> <a class="nav-link" href="/manager/admin-login">Admin</a></b>
+                        <b> <a class="nav-link" href="{% url 'ManagerApp:admin_login' %}">Admin Login</a></b>
                     </li>
+                    
 
                     {% endif %}
 

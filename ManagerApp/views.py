@@ -34,7 +34,7 @@ def super_login_view(request):
                     login(request, user)
                     return HttpResponseRedirect(reverse('ManagerApp:dashboard'))
                 else :
-                    return render(request, 'ManagerApp/adminLogin.html',context={'form' :form, 'error':"You are not Super user"})
+                    return render(request, 'ManagerApp/templates/ManagerApp/adminLogin.html',context={'form' :form, 'error':"You are not Super user"})
             
             else:
                 return render(request, 'ManagerApp/adminLogin.html', context={'form':form,'error':"Invalid username or password"})
@@ -75,7 +75,7 @@ def add_category(request):
         if form.is_valid():
             form.save()
             return redirect('ManagerApp:dashboard')
-    return render(request, 'ManagerApp/admin-add_category.html', {'form': form})
+    return render(request, 'ManagerApp/admin_add_category.html', {'form': form})
 
 @staff_member_required(login_url='/manager/admin-login')
 def total_users(request):

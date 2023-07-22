@@ -4,19 +4,46 @@
     .row{
         height:80vh;
     }
+    
+
+    .col-md-6-auto{
+        background-image: url('https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80');
+        background-repeat: no-repeat;
+    }
+
+    
 
 </style>
 
 {% block content %}
-<div class="container">
+<div class="container" style="background-image: url('https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80');background-repeat: no-repeat;background-size: 100% 100%;">
+    
     <div class="row">
+        <div>
+            <p style="text-align: center"> <br>Trusted by over 600 Lending Companies Worldwide </p>
+            <p><h6>1.Charts and Reports.</h6>
+                View detailed charts and see how your loan released and collections are changing month to month. You can also view cash flow reports and profit/loss statements.
+                This will allow you to instantly see your business performance through graphic charts and take informed decisions.
+            <h6>2.View loan details</h6>
+                Including repayments, loan terms, loan schedule, collateral, files, and comments. You can also print loan statements and schedule for your borrowers. Set loan fees, and penalties.
+                Create savings account for your borrowers and investor accounts for your investors. Add transactions such as deposits and withdrawals. You can also download and print statements.
+                The system will automatically add interest to the account depending on your product settings.
+            <h6>3.Auto-fill Loan Application and Agreements </h6>
+                The system will then replace those placeholders with data from the loan..
+                You can download the filled agreement in DOCX and PDF or send it via email or for E-Signature to the borrower.
+            </p> 
+        </div>
         <div class="col-md-6-auto">
-            <img src="#" class="img-fluid mx-auto" alt="Bckground Image">
+           <p>Welcome Dear {{User}}<p/>
             <!-- <img class="img-fluid mx-auto" alt="Bckground Image" src="https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"> -->
 
         </div>
         <div class="col-md-6-auto">
-            <div class="d-flex justify-content align-items-center">
+                <!--<img class="img-fluid mx-auto" alt="Bckground Image" src="https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80">-->
+
+        </div>
+        <div class="col-md-6-auto">
+            <div class="d-flex justify-content align-items-center" >
                 <a href="/loan/loan-request/">
                     <button type="button" class="btn btn-info btn-rounded m-2">Apply for a Loan</button>
                 </a>

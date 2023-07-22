@@ -42,8 +42,9 @@ def sign_up_view(request):
 
                 else:
                     error ='Your password is not strong enough'
-
+    
     return render(request, 'LoginApp/signup.html', context={'form':form, 'user':"Customer Register", 'error': error})
+    #return render(request, 'LoginApp/signup.html', context={'form':form, 'user':"Customer Register", 'error': error})
 
 def login_view(request):
     form= CustomerLoginForm()
