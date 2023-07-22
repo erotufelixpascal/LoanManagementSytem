@@ -17,3 +17,12 @@ pip install django-widget-tweaks
 Add to the installed apps as `widget_tweaks` 
 
 
+
+
+To Do List:
+- [ ] Automated Testing kits and libraries
+- [ ] Creating test data
+- [ ] Writing tests.
+- [ ] Code review and improvements
+- [ ] Model Completion
+
