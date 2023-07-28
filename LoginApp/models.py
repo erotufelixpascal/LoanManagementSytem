@@ -12,7 +12,7 @@ class CustomerSignUp(models.Model):
     address =models.CharField(max_length=250, default='Soroti,Uganda', blank= True, null= True)
     profile_picture =models.ImageField(upload_to='profile_pic')
     designation = models.CharField(max_length=250, blank= False)
-    phone =models.IntegerField(blank=True, null=True)
+    phone =models.TextField(max_length=250, blank=True, default='0773323264')
     information= models.TextField(blank=True, null=True)
 
 

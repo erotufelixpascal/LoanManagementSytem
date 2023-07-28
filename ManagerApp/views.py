@@ -7,7 +7,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import user_passes_test
-from LoanApp.models import loanCategory, loanRequest, CustomerLoan, loanTransaction
+from LoanApp.models import loanRequest, CustomerLoan, loanTransaction
 from .forms import LoanCategoryForm
 from LoginApp.models import CustomerSignUp
 from django.contrib.auth.models import User
