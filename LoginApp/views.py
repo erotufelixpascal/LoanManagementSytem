@@ -20,7 +20,7 @@ def sign_up_view(request):
     if request.method =='POST':
             form= CustomerSignUpForm(request.POST)
             #print(form.cleaned_data['username'])
-            if form.is_valid:
+            if form.is_valid():
                 user= form.save()
 
                 user_profile= CustomerSignUp(user=user)
@@ -37,7 +37,7 @@ def sign_up_view(request):
                 return HttpResponseRedirect(reverse('login_App'))
 
             else:
-                if User.object.filter(username =request.POST['username']).exists():
+                if User.objects.filter(username =request.POST['username']).exists():
                     error= 'Customer already exists'
 
                 else:
@@ -79,7 +79,7 @@ def edit_customer(request):
     if request.method == 'POST':
 
         form= UpdateCustomerForm(request.POST, request.FILES, instance =customer)
-        if form.is_valid:
+        if form.is_valid():
             customer = form.save(commit= False)
             customer.save()
             return HttpResponseRedirect(reverse('home'))

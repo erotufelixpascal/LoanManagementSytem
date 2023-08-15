@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
+from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from .models import CustomerSignUp
 from django import forms
@@ -23,7 +24,7 @@ class CustomerLoginForm(AuthenticationForm):
         model = User
         fields =('username', 'password')
 
-class UpdateCustomerForm:
+class UpdateCustomerForm(ModelForm):
     information = forms.CharField(widget= forms.Textarea)
 
     class Meta:
