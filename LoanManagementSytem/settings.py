@@ -51,7 +51,8 @@ INSTALLED_APPS = [
 
     # PLUGINS HERE
     'bootstrap4',
-    'widget_tweaks'
+    'widget_tweaks',
+    'mathfilters'
 ]
 
 MIDDLEWARE = [
@@ -135,8 +136,7 @@ USE_TZ = True
 # OUR MAIN CHANGES TO SETTING FILE HERE
 
 
-STATIC_DIR =os.path.join(BASE_DIR, 'static')
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
@@ -144,7 +144,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_URL = 'static/'
 
 #STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATICFILES_DIRS = [STATIC_DIR]
+STATICFILES_DIRS = [BASE_DIR /'static',] 
+STATIC_DIR =os.path.join(BASE_DIR, 'static')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Media
 

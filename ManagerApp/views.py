@@ -48,17 +48,17 @@ def dashboard(request):
     totalCustomer = CustomerSignUp.objects.all().count(),
     requestloan  = loanRequest.objects.all().filter(status='pending').count(),
     approved = loanRequest.objects.all().filter(status='approved').count(),
-    rejected = loanRequest.ojects.all().filter(status='rejected').count(),
-    totalLoan = CustomerLoan.objects.aggregate(Sum('totalLoan'))['total_loan__sum'],
+    rejected = loanRequest.objects.all().filter(status='rejected').count(),
+    totalLoan = CustomerLoan.objects.aggregate(Sum('total_loan'))['total_loan__sum'],
     totalPayable = CustomerLoan.objects.aggregate(Sum('payable_loan'))['payable_loan__sum'],
-    totalPaid = loanTransaction.objcts.aggregate(Sum('payment'))['payment__sum'],
+    totalPaid = loanTransaction.objects.aggregate(Sum('payment'))['payment__sum'],
 
     dict ={
         'totalCustomer': totalCustomer[0],
         'request' : requestloan[0],
         'approved' : approved[0],
         'rejected' : rejected[0],
-        'totaLoan' : totalLoan[0],
+        'totalLoan' : totalLoan[0],
         'totalPayable' : totalPayable[0],
         'totalPaid' : totalPaid[0],
     }
