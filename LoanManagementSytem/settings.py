@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'LoginApp.apps.LoginappConfig',
     'LoanApp.apps.LoanappConfig',
     'ManagerApp.apps.ManagerappConfig',
+    
 
     'django.contrib.admin',
     'django.contrib.auth',

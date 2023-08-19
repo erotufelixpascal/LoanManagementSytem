@@ -42,7 +42,7 @@ class CustomerLoan(models.Model):
     payable_loan = models.PositiveIntegerField(default=0)
 
     def __str__(self):
-        return self.customer.user
+        return self.customer
 
 
 
