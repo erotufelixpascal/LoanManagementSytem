@@ -17,6 +17,10 @@ def home(request):
 def LoanRequest(request):
     form = LoanRequestForm()
 
+    cdict = {
+        'helo' : 'John'
+    }
+
     if request.method =='POST':
         form= LoanRequestForm(request.POST)
 
@@ -25,7 +29,9 @@ def LoanRequest(request):
             loan_obj.customer = request.user.customer
             loan_obj.save()
             return redirect('/')
-    return render(request, 'LoanApp/loanrequest.html', context={'form':form})
+
+    cdict.update({"form":form})  
+    return render(request, 'LoanApp/loanrequest.html', context=cdict)
 
 @login_required(login_url='/account/login-customer')
 def LoanPayment(request):
@@ -70,18 +76,18 @@ def UserDashboard(request):
     totalPaid = loanTransaction.objects.filter(customer=request.user.customer).aggregate(Sum('payment'))[
         'payment__sum'],
 
-    dict = {
+    cdict = {
         'request': requestLoan[0],
         'approved': approved[0],
         'rejected': rejected[0],
         'totalLoan': totalLoan[0],
         'totalPayable': totalPayable[0],
         'totalPaid': totalPaid[0],
-        
+
 
     }
 
-    return render(request, 'LoanApp/user_dashboard.html', context=dict)
+    return render(request, 'LoanApp/user_dashboard.html', context=cdict)
 
 
 def error_404_view(request, exception):

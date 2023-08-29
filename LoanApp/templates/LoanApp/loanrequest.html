@@ -9,26 +9,39 @@
         <div class="row mb-5">
             <div class="p-5 m-auto rounded shadow-lg col-md-6 bg-body">
                 <h3 class="text-center text-success"> Request Form For A Loan</h3>
+                <p>{{helo}}</p>
                 
                 <form method="POST" class="my-5">
 
                     {% csrf_token %}
 
                     <div class="mb-4 input-group">
-                        <div class="input-group-text">Loan Category</div>    
+                        <div class="input-group-text">Loan Category</div>
+                        <select name="cars" id="cars">
+                            <option value="Agriculture">{{helo}}</option>
+                            <option value="School Fees">School Fees</option>
+                            <option value="Business">Business</option>
+                            <option value="Marriage">Marriage</option>
+                          </select>   
                     </div>
                     <div class="mb-4 form-outline"> 
                         <label class="form-label">Reason For Loan</label>
+                        <input type="text" id="" name="Reason For Loan"><br><br>
                     </div>
                     <div class="mb-4 form-outline">                      
                         <label class="form-label">Request Amount</label>
+                        <input type="text" id="" name="Request Amount"><br><br>
                     </div>
                     <div class="mb-4 form-outline">                        
                         <label class="form-label">Loan Period</label>
+                        <input type="text" id="" name="Loan Period"><br><br>
                     </div>
                     <div class="mb-4 form-outline">                        
                         <label class="form-label">Security</label>
+                        <input type="text" id="" name="Security"><br><br>
                     </div>
+
+                    
 
                     <!-- 2 column grid layout for inline styling -->
                     <div class="mb-4 row ">
