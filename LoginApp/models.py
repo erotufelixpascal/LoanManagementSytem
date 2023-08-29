@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 #signin page
 
 class CustomerSignUp(models.Model):
-    user = models.OneToOneField(User, unique=True, on_delete =models.CASCADE, related_name= 'customer')
+    username = models.OneToOneField(User, unique=True, on_delete =models.CASCADE, related_name= 'customer')
     first_name = models.CharField(max_length= 250, blank=False)
     last_name = models.CharField(max_length =250, blank= False)
     email = models.EmailField(max_length= 100, blank =False)

@@ -34,7 +34,7 @@ class loanTransaction(models.Model):
     payment_date = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return self.customer.user
+        return self.customer.first_name
 
 class CustomerLoan(models.Model):
     customer = models.ForeignKey(CustomerSignUp,on_delete= models.CASCADE, related_name='loan_user')

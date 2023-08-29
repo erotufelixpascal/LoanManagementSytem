@@ -44,14 +44,12 @@ def LoanPayment(request):
 
 @login_required(login_url='/account/login-customer')
 def UserTransaction(request):
-    transactions = loanTransaction.objects.filter(
-        customer=request.user.customer)
+    transactions = loanTransaction.objects.filter(customer=request.user.customer)
     return render(request, 'LoanApp/user_transaction.html', context={'transactions': transactions})
 
 @login_required(login_url='/account/login-customer')
 def UserLoanHistory(request):
-    loans = loanRequest.objects.filter(
-        customer=request.user.customer)
+    loans = loanRequest.objects.filter(customer=request.user.customer)
     return render(request, 'LoanApp/user_loan_history.html', context={'loans': loans})
 
 
