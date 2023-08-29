@@ -17,10 +17,6 @@ def home(request):
 def LoanRequest(request):
     form = LoanRequestForm()
 
-    cdict = {
-        'helo' : 'John'
-    }
-
     if request.method =='POST':
         form= LoanRequestForm(request.POST)
 
@@ -29,9 +25,8 @@ def LoanRequest(request):
             loan_obj.customer = request.user.customer
             loan_obj.save()
             return redirect('/')
-
-    cdict.update({"form":form})  
-    return render(request, 'LoanApp/loanrequest.html', context=cdict)
+ 
+    return render(request, 'LoanApp/loanrequest.html', )
 
 @login_required(login_url='/account/login-customer')
 def LoanPayment(request):
