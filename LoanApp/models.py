@@ -25,7 +25,7 @@ class loanRequest(models.Model):
     year = models.PositiveIntegerField(default=1)
 
     def __str__(self):
-        return self.customer.user
+        return self.customer
 
 class loanTransaction(models.Model):
     customer = models.ForeignKey(CustomerSignUp,on_delete= models.CASCADE, related_name='transaction_customer')
@@ -34,7 +34,7 @@ class loanTransaction(models.Model):
     payment_date = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return self.customer.first_name
+        return self.customer
 
 class CustomerLoan(models.Model):
     customer = models.ForeignKey(CustomerSignUp,on_delete= models.CASCADE, related_name='loan_user')
