@@ -49,7 +49,7 @@ def UserTransaction(requests):
 
 @login_required(login_url='/account/login-customer')
 def UserLoanHistory(request):
-    loans = loanRequest.objects.filter(customer=request.user.customer)
+    loans = loanRequest.objects.all().filter(customer=request.user.customer)
     return render(request, 'LoanApp/user_loan_history.html', context={'loans': loans})
 
 

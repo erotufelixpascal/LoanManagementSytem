@@ -154,3 +154,8 @@ MEDIA_URL = '/media/'
 # login url
 
 LOGIN_URL = '/account/login/'
+
+# fixing DEFAULT_AUTO_FIELD warnings
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

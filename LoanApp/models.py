@@ -2,8 +2,12 @@ from django.db import models
 from django.contrib.auth.models import User
 from LoginApp.models import CustomerSignUp
 import uuid
+from django.contrib.auth.models import User
+from django.db import models
 
-# Create your models here.
+class Customer(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    
 
 class loanCategory(models.Model):
     loan_name= models.CharField(max_length=250)
