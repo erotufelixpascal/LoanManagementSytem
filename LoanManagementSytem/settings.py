@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'LoginApp.apps.LoginappConfig',
     'LoanApp.apps.LoanappConfig',
     'ManagerApp.apps.ManagerappConfig',
-    
+    # 'LoanApp',
+    # 'LoginApp',
+    # 'ManagerApp',    
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -47,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles', 
+  
 
     
 
