@@ -13,7 +13,6 @@ from django.contrib.auth.models import User
 def sign_up_view(request):
     error = ''
     if request.user.is_authenticated:
-
         return HttpResponseRedirect(reverse('home'))
 
     form = CustomerSignUpForm()
